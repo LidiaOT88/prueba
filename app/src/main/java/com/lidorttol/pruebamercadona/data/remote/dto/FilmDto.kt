@@ -3,36 +3,35 @@ package com.lidorttol.pruebamercadona.data.remote.dto
 import com.google.gson.annotations.SerializedName
 
 data class FilmDto (
-  val id: String? = null,
-  val title: String? = null,
+  val id: String,
+  val title: String,
 
   @SerializedName("original_title") 
-  val originalTitle: String? = null,
+  val originalTitle: String,
 
   @SerializedName("original_title_romanised") 
-  val originalTitleRomanised: String? = null,
+  val originalTitleRomanised: String,
 
-  val image: String? = null,
+  val image: String,
 
   @SerializedName("movie_banner")
-  val movieBanner: String? = null,
+  val movieBanner: String,
 
-  val description: String? = null,
-  val director: String? = null,
-  val producer: String? = null,
+  val description: String,
+  val director: String,
+  val producer: String,
 
   @SerializedName("release_date") 
-  val releaseDate: String? = null,
+  val releaseDate: String,
 
   @SerializedName("running_time") 
-  val runningTime: String? = null,
+  val runningTime: String,
 
   @SerializedName("rt_score") 
-  val rtScore: String? = null,
+  val rtScore: String,
 
-  val people: List<PersonDto>? = null,
-  val species: List<String>? = null,
-  val locations: List<String>? = null,
-  val vehicles: List<String>? = null,
-  val url: String? = null
+  val people: List<String>,
+  val species: List<String>,
+  val locations: List<String>,
+  val vehicles: List<String>,
 )

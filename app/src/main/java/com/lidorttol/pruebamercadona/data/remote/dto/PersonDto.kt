@@ -14,7 +14,6 @@ data class PersonDto (
     @SerializedName("hair_color")
     val hairColor: String,
 
-    val films: List<FilmDto>,
-    val species: SpecieDto,
-    val url: String
+    val films: List<String>,
+    val species: String,
 )

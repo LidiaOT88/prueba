@@ -11,7 +11,6 @@ data class LocationDto (
     @SerializedName("surface_water")
     val surfaceWater: String,
 
-    val residents: List<PersonDto>,
-    val films: List<FilmDto>,
-    val url: String
+    val residents: List<String>,
+    val films: List<String>,
 )
