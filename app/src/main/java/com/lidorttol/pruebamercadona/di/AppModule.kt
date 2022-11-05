@@ -1,13 +1,21 @@
 package com.lidorttol.pruebamercadona.di
 
+import android.content.Context
+import androidx.room.Room
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.lidorttol.pruebamercadona.BuildConfig
+import com.lidorttol.pruebamercadona.data.DATABASE_NAME
+import com.lidorttol.pruebamercadona.data.local.LocalDatasource
+import com.lidorttol.pruebamercadona.data.local.LocalDatasourceImpl
+import com.lidorttol.pruebamercadona.data.local.dao.*
+import com.lidorttol.pruebamercadona.data.local.database.AppDatabase
 import com.lidorttol.pruebamercadona.data.remote.api.ApiService
 import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSource
 import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -18,6 +26,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    lateinit var database: AppDatabase
 
     @Provides
     fun provideBaseUrl() = "https://ghibliapi.herokuapp.com/"
@@ -52,6 +62,65 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideApiHelper(remoteDataSource: RemoteDataSourceImpl): RemoteDataSource = remoteDataSource
+    fun provideApiHelper(remoteDataSource: RemoteDataSourceImpl): RemoteDataSource =
+        remoteDataSource
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        database = Room.databaseBuilder(
+            appContext,
+            AppDatabase::class.java,
+            DATABASE_NAME
+        ).build()
+        return database
+    }
+
+    @Provides
+    @Singleton
+    fun provideFilmDao(database: AppDatabase): FilmDao {
+        return database.filmDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocationDao(database: AppDatabase): LocationDao {
+        return database.locationDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providePersonDao(database: AppDatabase): PersonDao {
+        return database.personDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSpecieDao(database: AppDatabase): SpecieDao {
+        return database.specieDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideVehicleDao(database: AppDatabase): VehicleDao {
+        return database.vehicleDao()
+    }
+
+    @Provides
+    @Singleton
+    fun proviceLocalDatasource(
+        filmDao: FilmDao,
+        locationDao: LocationDao,
+        personDao: PersonDao,
+        specieDao: SpecieDao,
+        vehicleDao: VehicleDao,
+    ): LocalDatasource =
+        LocalDatasourceImpl(
+            filmDao,
+            locationDao,
+            personDao,
+            specieDao,
+            vehicleDao,
+        )
 
 }
