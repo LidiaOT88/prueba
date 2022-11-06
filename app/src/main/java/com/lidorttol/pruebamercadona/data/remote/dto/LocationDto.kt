@@ -13,4 +13,5 @@ data class LocationDto (
 
     val residents: List<String>,
     val films: List<String>,
+    val url: String,
 )

@@ -15,4 +15,5 @@ data class SpecieDto (
 
     val people: List<String>,
     val films: List<String>,
+    val url: String,
 )

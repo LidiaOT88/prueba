@@ -13,4 +13,5 @@ data class VehicleDto (
     val length: String,
     val pilot: String,
     val films: List<String>,
+    val url: String,
 )

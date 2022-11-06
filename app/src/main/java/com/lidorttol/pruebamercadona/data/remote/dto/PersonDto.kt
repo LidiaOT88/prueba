@@ -15,5 +15,6 @@ data class PersonDto (
     val hairColor: String,
 
     val films: List<String>,
-    val species: String,
+    val specie: String,
+    val url: String,
 )

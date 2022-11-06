@@ -1,10 +1,14 @@
 package com.lidorttol.pruebamercadona.data.repository
 
-import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSource
-import javax.inject.Inject
+import com.lidorttol.pruebamercadona.data.bo.FilmBo
+import com.lidorttol.pruebamercadona.data.response.RepositoryResponse
 
-class Repository @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
-) {
+interface Repository {
+
+    suspend fun getFilms(resetDatabase: Boolean): RepositoryResponse<List<FilmBo>>
+
+    suspend fun deleteFilm(filmId: String): RepositoryResponse<Unit>
+
+    suspend fun getFilmDetail(filmId: String): RepositoryResponse<FilmBo>
 
 }

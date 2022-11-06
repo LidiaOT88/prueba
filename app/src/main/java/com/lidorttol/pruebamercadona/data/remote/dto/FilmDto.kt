@@ -34,4 +34,5 @@ data class FilmDto (
   val species: List<String>,
   val locations: List<String>,
   val vehicles: List<String>,
+  val url: String,
 )
