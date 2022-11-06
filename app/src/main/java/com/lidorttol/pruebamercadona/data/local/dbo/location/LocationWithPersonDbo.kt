@@ -7,8 +7,8 @@ import com.lidorttol.pruebamercadona.data.local.dbo.person.PersonDbo
 data class LocationWithPersonDbo(
     @Embedded val location: LocationDbo,
     @Relation(
-        parentColumn = "locationId",
-        entityColumn = "personId",
+          parentColumn = "locationId",
+          entityColumn = "personLocationId"
     )
     val residents: List<PersonDbo>
 )

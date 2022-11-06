@@ -9,9 +9,18 @@ data class VehicleDbo(
     @PrimaryKey
     @SerializedName("id")
     val vehicleId: String,
-    val name: String,
-    val description: String,
-    val vehicleClass: String,
-    val length: String,
-    val personId: String,
-)
+    val name: String?,
+    val description: String?,
+    val vehicleClass: String?,
+    val length: String?,
+    val vehiclePersonId: String?,
+    val vehicleFilmId: String?,
+) {
+
+    fun isEmpty() =
+        name.isNullOrEmpty()
+                || description.isNullOrEmpty()
+                || vehicleClass.isNullOrEmpty()
+                || length.isNullOrEmpty()
+
+}

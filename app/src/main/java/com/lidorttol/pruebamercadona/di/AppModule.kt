@@ -12,6 +12,8 @@ import com.lidorttol.pruebamercadona.data.local.database.AppDatabase
 import com.lidorttol.pruebamercadona.data.remote.api.ApiService
 import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSource
 import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSourceImpl
+import com.lidorttol.pruebamercadona.data.repository.Repository
+import com.lidorttol.pruebamercadona.data.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -122,5 +124,13 @@ object AppModule {
             specieDao,
             vehicleDao,
         )
+
+    @Singleton
+    @Provides
+    fun provideRepository(
+        localDataSource: LocalDatasource,
+        remoteDataSource: RemoteDataSource,
+    ) =
+        RepositoryImpl(localDataSource, remoteDataSource) as Repository
 
 }

@@ -4,11 +4,11 @@ import androidx.room.Embedded
 import androidx.room.Relation
 import com.lidorttol.pruebamercadona.data.local.dbo.person.PersonDbo
 
-data class VehicleWithPersonDbo(
+data class VehicleAndPersonDbo(
     @Embedded val vehicle: VehicleDbo,
     @Relation(
-         parentColumn = "vehicleId",
-         entityColumn = "pilot"
+         parentColumn = "vehiclePersonId",
+         entityColumn = "personId"
     )
     val pilot: PersonDbo
 )

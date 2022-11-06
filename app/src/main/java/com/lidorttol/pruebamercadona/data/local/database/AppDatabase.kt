@@ -16,10 +16,6 @@ import com.lidorttol.pruebamercadona.data.local.dbo.vehicle.VehicleDbo
         PersonDbo::class,
         SpecieDbo::class,
         VehicleDbo::class,
-        FilmCrossLocationDbo::class,
-        FilmCrossPersonDbo::class,
-        FilmCrossSpecieDbo::class,
-        FilmCrossVehicleDbo::class,
     ],
     version = 1
 )

@@ -9,8 +9,17 @@ data class SpecieDbo(
     @PrimaryKey
     @SerializedName("id")
     val specieId: String,
-    val name: String,
-    val classification: String,
-    val eyeColors: String,
-    val hairColors: String,
-)
+    val name: String?,
+    val classification: String?,
+    val eyeColors: String?,
+    val hairColors: String?,
+    val specieFilmId: String?,
+) {
+
+    fun isEmpty() =
+        name.isNullOrEmpty()
+                ||classification.isNullOrEmpty()
+                ||eyeColors.isNullOrEmpty()
+                ||hairColors.isNullOrEmpty()
+
+}
