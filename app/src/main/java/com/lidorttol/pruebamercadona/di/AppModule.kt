@@ -14,6 +14,10 @@ import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSource
 import com.lidorttol.pruebamercadona.data.remote.api.RemoteDataSourceImpl
 import com.lidorttol.pruebamercadona.data.repository.Repository
 import com.lidorttol.pruebamercadona.data.repository.RepositoryImpl
+import com.lidorttol.pruebamercadona.domain.GetFilmByIdDataUseCase
+import com.lidorttol.pruebamercadona.domain.GetFilmByIdDataUseCaseImpl
+import com.lidorttol.pruebamercadona.domain.GetFilmsDataUseCase
+import com.lidorttol.pruebamercadona.domain.GetFilmsDataUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -132,5 +136,13 @@ object AppModule {
         remoteDataSource: RemoteDataSource,
     ) =
         RepositoryImpl(localDataSource, remoteDataSource) as Repository
+
+    @Singleton
+    @Provides
+    fun provideGetFilmByIdDataUseCase(repository: Repository) = GetFilmByIdDataUseCaseImpl(repository) as GetFilmByIdDataUseCase
+
+    @Singleton
+    @Provides
+    fun provideGetFilmsDataUseCase(repository: Repository) = GetFilmsDataUseCaseImpl(repository) as GetFilmsDataUseCase
 
 }

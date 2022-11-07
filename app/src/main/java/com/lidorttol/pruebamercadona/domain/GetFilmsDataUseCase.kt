@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface GetFilmsDataUseCase {
-    suspend operator fun invoke(resetDatabase: Boolean = false): Flow<Event<AsyncResult<List<FilmBo>>>>
+    suspend operator fun invoke(resetDatabase: Boolean): Flow<Event<AsyncResult<List<FilmBo>>>>
 }
 
 class GetFilmsDataUseCaseImpl @Inject constructor(private val repository: Repository) : GetFilmsDataUseCase {

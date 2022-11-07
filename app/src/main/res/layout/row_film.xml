@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/film__card__root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        app:cardCornerRadius="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:id="@+id/film__image__image"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@id/film__label__duration"
+                app:layout_constraintEnd_toStartOf="@id/film__label__title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/film__label__title"
+                tools:ignore="ImageContrastCheck"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/film__label__title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/film__image__image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth="0dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minLines="2"
+                style="@style/TextAppearance.AppCompat.Title"
+                tools:text="TítuloTítuloTítuloTítuloTítuloTítuloTítuloTítuloTítuloTítuloTítuloTítulo" />
+
+            <TextView
+                android:id="@+id/film__label__duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/film__label__title"
+                app:layout_constraintStart_toStartOf="@id/film__label__title"
+                tools:text="126 min - " />
+
+            <TextView
+                android:id="@+id/film__label__release_year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/film__label__duration"
+                app:layout_constraintStart_toEndOf="@id/film__label__duration"
+                tools:text="2022" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
